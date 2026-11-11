@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react';
-import {Activity,GitBranch,Plus,RefreshCw,Trash2,Star,Search,Github,ExternalLink} from 'lucide-react';
+import {Activity,GitBranch,Plus,RefreshCw,Trash2,Star,Search,Github,ExternalLink,Settings} from 'lucide-react';
 import {db,defaults,getSettings,cachePut} from './lib/db';
 import {apiPaths,gh,paged,getRateLimit,GitHubApiError} from './lib/api';
 import {repoSchema} from './lib/validation';
