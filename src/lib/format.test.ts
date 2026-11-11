@@ -1,0 +1,2 @@
+import {describe,it,expect} from 'vitest';import {duration,timeAgo} from './format';
+describe('format helpers',()=>{it('formats short durations',()=>expect(duration('2026-01-01T00:00:00Z','2026-01-01T00:00:42Z')).toBe('42s'));it('handles missing dates',()=>expect(timeAgo(null)).toBe('Unknown'));});
