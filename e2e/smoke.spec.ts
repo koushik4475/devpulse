@@ -88,12 +88,28 @@ test('adds a public repository and displays API-mapped sections', async ({ page 
   await expect(page.getByText('Version 2.1 RC')).toBeVisible();
 });
 
-test('settings and versioned backup export are available', async ({ page }) => {
+test('settings and versioned backup import/export are available', async ({ page }) => {
+  await mockGitHub(page);
   await page.goto('/');
-  await page.getByRole('button', { name: 'Settings' }).click();
+  await page.getByRole('button', { name: 'Settings' }).first().click();
   await expect(page.getByText('Auto refresh')).toBeVisible();
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export backup' }).click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toContain('devpulse-backup-');
+
+  const backup = {
+    version: 1,
+    exportedAt: '2026-11-11T10:00:00.000Z',
+    repos: [{ owner: 'octocat', name: 'hello-world', fullName: repository, pinned: true, userLabel: 'Imported', addedAt: 100, sortOrder: 0 }],
+    settings: { theme: 'forest', refreshInterval: 15, cacheTtl: 300000, compact: false },
+  };
+  await page.locator('input[aria-label="Import backup file"]').setInputFiles({
+    name: 'devpulse-backup.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(backup)),
+  });
+  await expect(page.getByText('Backup imported. Refreshing repositories…')).toBeVisible();
+  await expect(page.getByRole('link', { name: new RegExp(repository) }).first()).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'forest');
 });
