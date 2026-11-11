@@ -1,0 +1,3 @@
+import {test,expect} from '@playwright/test';
+test('dashboard loads and shows useful empty state',async({page})=>{await page.goto('/');await expect(page.getByText('Good to see you')).toBeVisible();await expect(page.getByText('Your watchlist is waiting')).toBeVisible();});
+test('settings route opens',async({page})=>{await page.goto('/');await page.getByRole('button',{name:'Settings'}).click();await expect(page.getByText('Refresh & cache')).toBeVisible();});
