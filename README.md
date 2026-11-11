@@ -33,7 +33,15 @@ DevPulse uses unauthenticated public REST endpoints for repository metadata, pul
 The watchlist, labels, settings, and cached public API responses are stored in this browser's IndexedDB. No backend or analytics are used. No GitHub token is requested or shipped.
 
 ## Cloudflare Pages
-Framework preset: Vite. Build command: `npm run build`. Output directory: `dist`. Production branch: `main`. No environment variables required. Connect this repository to Cloudflare Pages, then verify the deployed app and API failure states.
+The Cloudflare Pages project is connected to this GitHub repository and configured for automatic deployments from `main`.
+
+- Framework preset: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
+- Production branch: `main`
+- Environment variables: none required
+
+Project URL: https://devpulse-2wg.pages.dev
 
 ## License
 MIT. See [LICENSE](LICENSE).
