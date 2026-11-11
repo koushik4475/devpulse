@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { apiPaths, getRateLimit, gh, GitHubApiError, paged } from './api';
+import { apiPaths, getRateLimit, gh, paged } from './api';
 
 function jsonResponse(data: unknown, options: { status?: number; headers?: Record<string, string> } = {}) {
   return new Response(JSON.stringify(data), {

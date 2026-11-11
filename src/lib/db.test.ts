@@ -21,9 +21,9 @@ describe('IndexedDB persistence', () => {
   });
 
   it('stores cached payloads with freshness metadata and ETags', async () => {
-    await cachePut(db.repoCache, 'octocat/hello-world', { stars: 12 }, '"etag-1"', 60_000);
+    await cachePut(db.repoCache, 'octocat/hello-world', { id: 1, name: 'hello-world', full_name: 'octocat/hello-world', html_url: 'https://github.com/octocat/hello-world', description: null, default_branch: 'main', stargazers_count: 12, forks_count: 0, open_issues_count: 0, language: 'TypeScript', license: null, pushed_at: null, archived: false }, '"etag-1"', 60_000);
     const cached = await cacheGet(db.repoCache, 'octocat/hello-world');
-    expect(cached?.payload).toEqual({ stars: 12 });
+    expect(cached?.payload.stargazers_count).toBe(12);
     expect(cached?.etag).toBe('"etag-1"');
     expect(cached?.expiresAt).toBeGreaterThan(cached?.fetchedAt ?? 0);
   });
