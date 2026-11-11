@@ -110,6 +110,7 @@ test('settings and versioned backup import/export are available', async ({ page 
     buffer: Buffer.from(JSON.stringify(backup)),
   });
   await expect(page.getByText('Backup imported. Refreshing repositories…')).toBeVisible();
+  await page.getByRole('button', { name: 'Repositories' }).click();
   await expect(page.getByRole('link', { name: new RegExp(repository) }).first()).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'forest');
 });
