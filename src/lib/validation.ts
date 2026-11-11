@@ -1,0 +1,3 @@
+import {z} from 'zod';
+export const repoSchema=z.string().trim().transform(v=>{const match=v.replace(/^https?:\/\/(www\.)?github\.com\//,'').replace(/\.git$/,'').replace(/\/$/,'').split('/');return match.slice(0,2).join('/');}).refine(v=>/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(v),'Enter a valid owner/repository or GitHub URL.');
+export const backupSchema=z.object({version:z.literal(1),exportedAt:z.string(),repos:z.array(z.object({owner:z.string(),name:z.string(),fullName:z.string(),pinned:z.boolean(),userLabel:z.string(),addedAt:z.number(),sortOrder:z.number()})),settings:z.object({theme:z.enum(['dark','light','midnight','forest']),refreshInterval:z.number(),cacheTtl:z.number(),compact:z.boolean()})});
