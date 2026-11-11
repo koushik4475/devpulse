@@ -1,0 +1,15 @@
+name: Bug report
+description: Report a reproducible problem
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include steps to reproduce and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, and relevant repository/API context.
