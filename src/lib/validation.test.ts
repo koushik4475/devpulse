@@ -1,0 +1,3 @@
+import {describe,it,expect} from 'vitest';import {repoSchema,backupSchema} from './validation';
+describe('repository input normalization',()=>{it('accepts owner/name',()=>expect(repoSchema.parse('octocat/hello-world')).toBe('octocat/hello-world'));it('normalizes GitHub URLs',()=>expect(repoSchema.parse('https://github.com/facebook/react.git')).toBe('facebook/react'));it('rejects malformed values',()=>expect(repoSchema.safeParse('not-a-repo').success).toBe(false));});
+describe('backup validation',()=>{it('rejects unsupported backup versions',()=>expect(backupSchema.safeParse({version:2}).success).toBe(false));});
