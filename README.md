@@ -1,4 +1,7 @@
-# DevPulse
+# DevPulse | GitHub Dashboard for Public Repositories, Pull Requests, Issues and Actions
+
+DevPulse is a privacy-conscious, local-first GitHub dashboard for monitoring public repositories, open pull requests, issues, releases, and GitHub Actions workflow runs. Built as a static React and TypeScript progressive web app, it stores preferences in IndexedDB and uses public GitHub APIs without requiring a backend, OAuth login, or personal access token. It is designed for developers who want a lightweight public-repository activity and CI overview.
+
 
 A personal developer control center for monitoring public GitHub repositories, pull requests, issues, releases, and GitHub Actions. Built as a static React + TypeScript PWA; no backend, database service, paid API, GitHub OAuth, or token required.
 
