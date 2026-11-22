@@ -12,9 +12,9 @@ export function workflowDisplayState(run: Pick<WorkflowRun, 'status' | 'conclusi
   switch (run.conclusion) {
     case 'success': return 'success';
     case 'failure': return 'failure';
-    case 'cancelled':
-    case 'timed_out':
-    case 'action_required': return 'cancelled';
+    case 'cancelled': return 'cancelled';
+    case 'timed_out': return 'failure';
+    case 'action_required': return 'unknown';
     default: return 'unknown';
   }
 }

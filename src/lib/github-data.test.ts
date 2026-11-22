@@ -29,6 +29,8 @@ describe('GitHub payload mapping helpers', () => {
     expect(workflowDisplayState({ status: 'completed', conclusion: 'success' })).toBe('success');
     expect(workflowDisplayState({ status: 'completed', conclusion: 'failure' })).toBe('failure');
     expect(workflowDisplayState({ status: 'completed', conclusion: 'cancelled' })).toBe('cancelled');
+    expect(workflowDisplayState({ status: 'completed', conclusion: 'timed_out' })).toBe('failure');
+    expect(workflowDisplayState({ status: 'completed', conclusion: 'action_required' })).toBe('unknown');
     expect(workflowDisplayState({ status: 'in_progress', conclusion: null })).toBe('running');
     expect(workflowDisplayState({ status: 'queued', conclusion: null })).toBe('queued');
     expect(workflowDisplayState({ status: 'completed', conclusion: null })).toBe('unknown');
